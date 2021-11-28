@@ -1,0 +1,1 @@
+- declare enum 无法识别的原因

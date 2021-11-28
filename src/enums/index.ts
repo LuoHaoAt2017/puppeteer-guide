@@ -1,31 +1,4 @@
-declare interface FormControl {
-
-  controlKey: ControlKey;
-
-  dataFieled: string;
-
-  displayName: string;
-
-  visible: boolean;
-
-  editable: boolean;
-
-  valid: boolean;
-
-  value: any;
-
-  defaultValue: any;
-
-  displayRule: Rule; // 显示规则
-
-  computeRule: Rule; // 计算规则
-
-  mappingRule: Rule; // 充填规则
-
-  linkingRule: Rule; // 关联规则
-}
-
-declare enum ControlType {
+export enum ControlType {
   FormTextbox = 0, // 文本控件
   FormNumber = 1, // 数字控件
   FormDate = 2, // 日期控件
@@ -42,7 +15,7 @@ declare enum ControlType {
   FormGrid = 13, // 子表控件
 }
 
-declare enum ControlKey {
+export enum ControlKey {
   FormTextbox = 'FormTextbox', // 文本控件
   FormNumber = 'FormNumber', // 数字控件
   FormDate = 'FormDate', // 日期控件
@@ -57,4 +30,11 @@ declare enum ControlKey {
   FormUser = 'FormUser', // 人员控件
   FormDept = 'FormDept', // 部门控件
   FormGrid = 'FormGrid', // 子表控件
+}
+
+export enum RuleType {
+  DisplayRule = 0, // 显示规则
+  ComputeRule = 1, // 计算规则
+  MappingRule = 2, // 充填规则
+  LinkingRule = 3, // 关联规则
 }

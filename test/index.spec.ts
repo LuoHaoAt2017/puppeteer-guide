@@ -1,21 +1,22 @@
 import FormLogic from "../src/formlogic";
+import { ControlType, ControlKey } from '../src/enums';
 
 const formContext = {
   F0000001: {
-    controlType: 1,
-    controlKey: 'FormNumber',
+    controlType: ControlType.FormNumber,
+    controlKey: ControlKey.FormNumber,
     dataFieled: 'F0000001',
     visible: true,
     editable: true,
     required: true,
     defaultValue: null,
     displayName: '速度（千米/小时）',
-    computationRuleFields: null,
-    computationRule: null,
+    computeRuleFields: null,
+    computeRule: null,
   },
   F0000002: {
-    controlType: 1,
-    controlKey: 'FormNumber',
+    controlType: ControlType.FormNumber,
+    controlKey: ControlKey.FormNumber,
     dataFieled: 'F0000002',
     visible: true,
     editable: true,
@@ -23,12 +24,12 @@ const formContext = {
     value: 0.2,
     defaultValue: null,
     displayName: '时间（小时）',
-    computationRuleFields: null,
-    computationRule: null,
+    computeRuleFields: null,
+    computeRule: null,
   },
   F0000003: {
-    controlType: 1,
-    controlKey: 'FormNumber',
+    controlType: ControlType.FormNumber,
+    controlKey: ControlKey.FormNumber,
     dataFieled: 'F0000003',
     visible: true,
     editable: true,
@@ -36,8 +37,8 @@ const formContext = {
     value: null,
     defaultValue: null,
     displayName: '路程（公里）',
-    computationRuleFields: ['F0000001', 'F0000002'],
-    computationRule: '{F0000001} * {F0000002}',
+    computeRuleFields: ['F0000001', 'F0000002'],
+    computeRule: '{F0000001} * {F0000002}',
   },
 };
 

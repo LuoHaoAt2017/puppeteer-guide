@@ -1,7 +1,10 @@
+import { RuleType } from '../enums';
+import BaseControl from '../controls/base-control';
+import { ControlOpts } from '../interface/control';
 export interface IDisplayRule {
   displayRule: Rule; // 显示规则
 
-  initDisplayRule(): void;
+  initDisplayRule(control: BaseControl, options: ControlOpts): void;
 
   executeDisplayRule(rule: Rule): void;
 }
@@ -9,7 +12,7 @@ export interface IDisplayRule {
 export interface IComputeRule {
   computeRule: Rule; // 计算规则
 
-  initComputeRule(): void;
+  initComputeRule(control: BaseControl, options: ControlOpts): void;
 
   executeComputeRule(rule: Rule): void;
 }
@@ -28,4 +31,11 @@ export interface ILinkingRule {
   initLinkingRule(): void;
 
   executeLinkingRule(rule: Rule): void;
+}
+
+export interface Rule {
+  pubers: Array<string>;
+  suber: string;
+  expression: string,
+  type: RuleType
 }

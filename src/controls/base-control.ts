@@ -1,8 +1,10 @@
 import { Message } from '../message';
 import FormLogic from '../formlogic';
 import { BusinessRule } from './business-rule';
-import { ColorTheme } from '../interface/theme';
-class BaseControl extends BusinessRule implements ColorTheme {
+import { ControlKey } from '../enums';
+import { ControlOpts } from '../interface/control';
+
+class BaseControl extends BusinessRule {
 
   controlKey: ControlKey;
 
@@ -26,15 +28,15 @@ class BaseControl extends BusinessRule implements ColorTheme {
 
   border: string = "#eee"; // 控件边框颜色
 
-  constructor(opts: BaseControl, form: FormLogic) {
-    super(opts, form);
+  constructor(opts: ControlOpts, form: FormLogic) {
+    super(form);
     this.displayName = opts.displayName;
     this.controlKey = opts.controlKey;
     this.dataFieled = opts.dataFieled;
     this.value = opts.defaultValue;
     // 初始化业务规则
-    this.initDisplayRule();
-    this.initComputeRule();
+    this.initDisplayRule(this, opts);
+    this.initComputeRule(this, opts);
     this.initMappingRule();
     this.initLinkingRule();
   }
@@ -104,6 +106,7 @@ class BaseControl extends BusinessRule implements ColorTheme {
   }
 
   public subscribe(pubers: Array<string>) {
+    debugger;
     // z = x * y
     // 当前控件是订阅者，其余控件是发布者。
     this.$form.$dispatcher.subscribe(this.dataFieled, pubers);
