@@ -1,4 +1,5 @@
 import { RuleType } from '../enums';
+import { Message } from '../message';
 import BaseControl from '../controls/base-control';
 import { ControlOpts } from '../interface/control';
 export interface IDisplayRule {
@@ -6,7 +7,7 @@ export interface IDisplayRule {
 
   initDisplayRule(control: BaseControl, options: ControlOpts): void;
 
-  executeDisplayRule(rule: Rule): void;
+  executeDisplayRule(control: BaseControl, mesg: Message): void;
 }
 
 export interface IComputeRule {
@@ -14,23 +15,23 @@ export interface IComputeRule {
 
   initComputeRule(control: BaseControl, options: ControlOpts): void;
 
-  executeComputeRule(rule: Rule): void;
+  executeComputeRule(control: BaseControl, mesg: Message): void;
 }
 
 export interface IMappingRule {
   mappingRule: Rule; // 充填规则
 
-  initMappingRule(): void;
+  initMappingRule(control: BaseControl, options: ControlOpts): void;
 
-  executeMappingRule(rule: Rule): void;
+  executeMappingRule(control: BaseControl, mesg: Message): void;
 }
 
 export interface ILinkingRule {
   linkingRule: Rule; // 关联规则
 
-  initLinkingRule(): void;
+  initLinkingRule(control: BaseControl, options: ControlOpts): void;
 
-  executeLinkingRule(rule: Rule): void;
+  executeLinkingRule(control: BaseControl, mesg: Message): void;
 }
 
 export interface Rule {

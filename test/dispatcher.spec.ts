@@ -5,7 +5,7 @@ const formContext = {
   F0000001: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000001',
+    dataField: 'F0000001',
     visible: true,
     editable: true,
     required: true,
@@ -17,7 +17,7 @@ const formContext = {
   F0000002: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000002',
+    dataField: 'F0000002',
     visible: true,
     editable: true,
     required: true,
@@ -30,7 +30,7 @@ const formContext = {
   F0000003: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000003',
+    dataField: 'F0000003',
     visible: true,
     editable: true,
     required: true,
@@ -46,11 +46,13 @@ describe('index.js: ', () => {
 
   const form = new FormLogic(formContext);
 
-  const control = form.getControl('F0000003');
-
-  const init_value = control?.getValue();
-
-  it('计算规则初始化测试', () => {
-    expect(init_value).toBe(0.08);
+  test('计算规则初始化测试', () => {
+    const table = form.$dispatcher.getTable();
+    const suber = 'F0000003';
+    const pubers = table.get(suber);
+    expect(pubers.length).toBe(2);
+    expect(pubers[0]).toBe('F0000001'); // ['F0000002', 'F0000003']
+    expect(pubers[1]).toBe('F0000002'); // ['F0000002', 'F0000003']
   });
 });
+ 

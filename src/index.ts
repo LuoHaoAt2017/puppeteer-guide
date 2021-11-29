@@ -5,10 +5,11 @@ const formContext = {
   F0000001: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000001',
+    dataField: 'F0000001',
     visible: true,
     editable: true,
     required: true,
+    value: 40,
     defaultValue: null,
     displayName: '速度（千米/小时）',
     computeRuleFields: null,
@@ -17,7 +18,7 @@ const formContext = {
   F0000002: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000002',
+    dataField: 'F0000002',
     visible: true,
     editable: true,
     required: true,
@@ -30,7 +31,7 @@ const formContext = {
   F0000003: {
     controlType: ControlType.FormNumber,
     controlKey: ControlKey.FormNumber,
-    dataFieled: 'F0000003',
+    dataField: 'F0000003',
     visible: true,
     editable: true,
     required: true,
@@ -42,8 +43,4 @@ const formContext = {
   },
 };
 
-const form = new FormLogic(formContext);
-
-const dispatcher = form.$dispatcher;
-
-console.log('dispatcher', dispatcher);
+new FormLogic(formContext);

@@ -18,6 +18,10 @@ export default class Dispatcher {
     this.$formInstance = formInstance;
   }
 
+  public getTable(): Map<string, Array<string>> {
+    return this.table;
+  }
+
   /**
    * 
    * @param publisher 发布者 id
@@ -58,6 +62,10 @@ export default class Dispatcher {
       }
     }
     // 处理消息队列中的消息体
+  }
+
+  public pushMessage(control: BaseControl) {
+    this.messageQueue.enquene(new Message(control));
   }
 
   public update() {

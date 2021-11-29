@@ -8,7 +8,7 @@ class BaseControl extends BusinessRule {
 
   controlKey: ControlKey;
 
-  dataFieled: string;
+  dataField: string;
 
   displayName: string;
 
@@ -32,8 +32,9 @@ class BaseControl extends BusinessRule {
     super(form);
     this.displayName = opts.displayName;
     this.controlKey = opts.controlKey;
-    this.dataFieled = opts.dataFieled;
-    this.value = opts.defaultValue;
+    this.dataField = opts.dataField;
+    this.value = opts.value;
+    this.defaultValue = opts.defaultValue;
     // 初始化业务规则
     this.initDisplayRule(this, opts);
     this.initComputeRule(this, opts);
@@ -106,14 +107,24 @@ class BaseControl extends BusinessRule {
   }
 
   public subscribe(pubers: Array<string>) {
-    debugger;
     // z = x * y
     // 当前控件是订阅者，其余控件是发布者。
-    this.$form.$dispatcher.subscribe(this.dataFieled, pubers);
+    this.$form.$dispatcher.subscribe(this.dataField, pubers);
   }
 
   public receive(mesg: Message) {
-
+    if (this.displayRule) {
+      this.executeDisplayRule(this, mesg);
+    }
+    if (this.computeRule) {
+      this.executeComputeRule(this, mesg);
+    }
+    if (this.mappingRule) {
+      this.executeMappingRule(this, mesg);
+    }
+    if (this.linkingRule) {
+      this.executeLinkingRule(this, mesg);
+    }
   }
 }
 

@@ -4,7 +4,7 @@ export interface ControlOpts {
 
   controlKey: ControlKey;
 
-  dataFieled: string;
+  dataField: string;
 
   displayName: string;
 

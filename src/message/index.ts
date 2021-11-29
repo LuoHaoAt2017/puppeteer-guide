@@ -6,9 +6,10 @@ export class Message {
 
   private publisher: BaseControl;
 
-  constructor(subscriber: BaseControl, publisher: BaseControl) {
+  // 消息的接受者是必须的，消息的发送者是可选的。
+  constructor(subscriber: BaseControl, publisher?: BaseControl) {
     this.subscriber = subscriber;
-    this.publisher = publisher;
+    this.publisher = publisher || null;
   }
 
   getSuber(): BaseControl {
