@@ -39,7 +39,7 @@ const formContext = {
     defaultValue: null,
     displayName: '路程（公里）',
     computeRuleFields: ['F0000001', 'F0000002'],
-    computeRule: '{F0000001} * {F0000002}',
+    computeRule: '{F0000001} + ({F0000001} + {F0000002}) * {F0000002} + {F0000001} * {F0000002}',
   },
 };
 

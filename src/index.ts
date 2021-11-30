@@ -9,7 +9,7 @@ const formContext = {
     visible: true,
     editable: true,
     required: true,
-    value: 40,
+    value: 1,
     defaultValue: null,
     displayName: '速度（千米/小时）',
     computeRuleFields: null,
@@ -22,7 +22,7 @@ const formContext = {
     visible: true,
     editable: true,
     required: true,
-    value: 0.2,
+    value: 2,
     defaultValue: null,
     displayName: '时间（小时）',
     computeRuleFields: null,
@@ -39,7 +39,7 @@ const formContext = {
     defaultValue: null,
     displayName: '路程（公里）',
     computeRuleFields: ['F0000001', 'F0000002'],
-    computeRule: '{F0000001} * {F0000002}',
+    computeRule: '{F0000001} + ({F0000001} + {F0000002}) * {F0000002} + {F0000001} * {F0000002}',
   },
 };
 

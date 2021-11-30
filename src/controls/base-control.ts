@@ -112,6 +112,10 @@ class BaseControl extends BusinessRule {
     this.$form.$dispatcher.subscribe(this.dataField, pubers);
   }
 
+  /**
+   * 订阅者接受消息
+   * 按照一定的顺序执行业务规则
+   */
   public receive(mesg: Message) {
     if (this.displayRule) {
       this.executeDisplayRule(this, mesg);

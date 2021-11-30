@@ -4,14 +4,13 @@ import Calculator from './calculator';
 
 export default class FormLogic {
 
-  controls: BaseControl[];
+  controls: BaseControl[] = [];
 
-  $dispatcher: Dispatcher;
+  $dispatcher: Dispatcher = null;
 
-  $calculator: Calculator;
+  $calculator: Calculator = null;
 
   constructor(context: any) {
-    this.controls = [];
     this.$dispatcher = new Dispatcher(this);
     this.$calculator = new Calculator(this);
     this.registerControls(context);
@@ -32,6 +31,7 @@ export default class FormLogic {
         this.$dispatcher.pushMessage(control);
       }
     }
+    // 变更行为，更新状态。
     this.$dispatcher.update();
   }
 

@@ -95,7 +95,8 @@ export class BusinessRule implements IDisplayRule, IComputeRule, IMappingRule, I
   }
 
   public executeDisplayRule(control: BaseControl, mesg: Message) {
-    this.$form.$calculator.getRuleResult(this.displayRule);
+    const value = this.$form.$calculator.getRuleResult(this.displayRule);
+    control.value = value;
   }
 
   public executeComputeRule(control: BaseControl, mesg: Message) {
